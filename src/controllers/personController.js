@@ -1,27 +1,24 @@
+const client = require("../routes/config/elastic");
 
 
 exports.get = (req, res, next) => {
-    res.status(200).send('Requisição recebida com sucesso!');
-};
+    const searchText = req.query.text
 
-
-exports.getById = (req, res, next) => {
-    res.status(200).send('Requisição recebida com sucesso!');
-};
-
-
-
-exports.post = (req, res, next) => {
-    res.status(201).send('Requisição recebida com sucesso!');
-};
-
-
-exports.put = (req, res, next) => {
-    let id = req.params.id;
-    res.status(201).send(`Requisição recebida com sucesso! ${id}`);
-};
-
-exports.delete = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(`Requisição recebida com sucesso! ${id}`);
+    client.search({
+        body: {
+            query: {
+                fuzzy: {
+                    nmLogradouro: {
+                        value: searchText
+                    }
+                }
+            }
+        }
+    })
+    .then(response => {
+        return res.json(response.body.hits)
+    })
+    .catch(err => {
+        return res.status(500).json({"message": err})
+    })
 };
