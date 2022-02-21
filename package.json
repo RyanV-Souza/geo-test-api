@@ -1,0 +1,28 @@
+{
+  "name": "geo-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanV-Souza/geo-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyanV-Souza/geo-test/issues"
+  },
+  "homepage": "https://github.com/RyanV-Souza/geo-test#readme",
+  "dependencies": {
+    "@elastic/elasticsearch": "7.17",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
